@@ -24,5 +24,8 @@ Finally the extra extra (only if you have the time), make it so you can filter t
  - Classic Range (Was first brewed before 2010)
  - High Acidity (pH lower than 4)
 
+## Extension 3 - Creative License
+
+Make it look good, go wild! :) 
 
 Best of luck!
