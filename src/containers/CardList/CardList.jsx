@@ -7,11 +7,11 @@ import Card from '../../components/Card/Card';
 
 const CardList = () => {
     return (
-        <div>
+        <section className={styles.beerlist}>
             <Card beer={beers[0]} />
             <Card beer={beers[1]} />
             <Card beer={beers[2]} />
-        </div>
+        </section>
     )
 }
 
