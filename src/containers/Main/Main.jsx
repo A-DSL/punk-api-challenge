@@ -7,9 +7,9 @@ import CardList from '../CardList/CardList';
 
 const Main = () => {
     return (
-        <div>
+        <main className={styles.mainbody}>
             <CardList />
-        </div>
+        </main>
     )
 }
 

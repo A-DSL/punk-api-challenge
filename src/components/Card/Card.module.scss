@@ -1,0 +1,19 @@
+@import '../../assets/variables.module.scss';
+
+.card{
+    display:flex;
+    background-color:$primaryfrontcolour;
+}
+
+.cardleft{
+    .cardleft__image{
+        /*placeholder dimensions*/
+        height:300px;
+        width:auto;
+    }
+}
+
+.filterdetails{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+}

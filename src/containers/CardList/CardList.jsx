@@ -9,6 +9,8 @@ const CardList = () => {
     return (
         <div>
             <Card beer={beers[0]} />
+            <Card beer={beers[1]} />
+            <Card beer={beers[2]} />
         </div>
     )
 }
