@@ -11,7 +11,7 @@ const Card = (props) => {
             <div className={styles.filterdetails}>
                 <span className={styles.filterdetails__block}>
                     <p>ABV</p>
-                    <p>{abv}</p>
+                    <p>{abv}%</p>
                 </span>
                 <span className={styles.filterdetails__block}>
                     <p>IBU</p>
@@ -32,15 +32,15 @@ const Card = (props) => {
             </div>
         </div>
 
-         <div className={styles.cardright}>
+        <div className={styles.cardright}>
             <div className={styles.cardright__title}>
                 <h4>{name}</h4>
                 <p>{tagline}</p>
             </div>
             <div className={styles.cardright__info}>
                 <p>{description}</p>
-                <p>First brewed: {first_brewed}</p>
-                <p>Brewing Tips: {brewers_tips}</p>
+                <p><b>First brewed:</b> {first_brewed}</p>
+                <p><b>Brewing Tips:</b> {brewers_tips}</p>
             </div>
         </div>
     

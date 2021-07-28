@@ -1,14 +1,12 @@
 import React from 'react';
 import styles from './Main.module.scss';
-import beers from '../../assets/beers';
-import { useState, useEffect } from "react";
 
 import CardList from '../CardList/CardList';
 
-const Main = () => {
+const Main = (props) => {
     return (
         <main className={styles.mainbody}>
-            <CardList />
+            <CardList filteredList={props.filteredList}/>
         </main>
     )
 }

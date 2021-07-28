@@ -1,0 +1,9 @@
+@import '../../assets/variables.module.scss';
+
+.navigation{
+    padding:20px 10px;
+    width:22%;
+    background-color:$primarybgcolour;
+    display:flex;
+    justify-content:center;
+}

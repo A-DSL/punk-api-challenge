@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from './Navbar.module.scss';
-import beers from '../../assets/beers';
-import { useState, useEffect } from "react";
+import SearchBox from '../../components/SearchBox/SearchBox';
 
-const Navbar = () => {
+const Navbar = (props) => {
+
     return (
-        <div>
-            woo
+        <div className={styles.navigation}>
+            <SearchBox searchBeer={props.searchBeer} updateBeerSearch={props.updateBeerSearch}/>
         </div>
     )
 }

@@ -1,19 +1,40 @@
 @import '../../assets/variables.module.scss';
 
 .card{
+    height:430px;
+    width:80%;
     display:flex;
     background-color:$primaryfrontcolour;
+    border-radius:8px;
+    margin:10px;
 }
 
 .cardleft{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
     .cardleft__image{
-        /*placeholder dimensions*/
-        height:300px;
+        margin:10px;
+        max-height:300px;
         width:auto;
+    }
+    .filterdetails{
+        margin:10px;
+        display:grid;
+        grid-template-columns:1fr 1fr 1fr;
+        grid-gap:8px;
     }
 }
 
-.filterdetails{
-    display:grid;
-    grid-template-columns:1fr 1fr 1fr;
+
+
+.cardright{
+    margin:10px;
+    > div{
+        margin:10px;
+        > *{
+            margin-top:4px;
+        }
+    }
 }

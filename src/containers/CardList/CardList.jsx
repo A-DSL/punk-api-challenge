@@ -1,16 +1,16 @@
 import React from 'react';
 import styles from './CardList.module.scss';
-import beers from '../../assets/beers';
-import { useState, useEffect } from "react";
 
 import Card from '../../components/Card/Card';
 
-const CardList = () => {
+const CardList = (props) => {
+    const beerList = props.filteredList.map( (beer) => {
+        return <Card beer={beer} />
+    })
+
     return (
         <section className={styles.beerlist}>
-            <Card beer={beers[0]} />
-            <Card beer={beers[1]} />
-            <Card beer={beers[2]} />
+            {beerList}
         </section>
     )
 }
