@@ -1,9 +1,11 @@
 @import '../../assets/variables.module.scss';
 
 .navigation{
-    padding:20px 10px;
-    width:22%;
-    background-color:$primarybgcolour;
-    display:flex;
-    justify-content:center;
+    margin: 2% 1% 0 1%;
+    height: 90%;
+    width: 20%;
+    background-color: $secondarybgcolour;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
 }

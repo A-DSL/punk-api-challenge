@@ -1,10 +1,16 @@
 @import '../../assets/variables.module.scss';
 
 .beerlist{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    grid-gap:10px;
-    padding-top:3%;
+    margin-top: 2%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
     overflow-x: hidden;
     overflow-y: auto;
+}
+
+@media screen and (max-width: 415px){
+    .beerlist{
+        grid-template-columns: 1fr;
+    }
 }
