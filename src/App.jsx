@@ -15,41 +15,47 @@ import Main from './containers/Main/Main';
 
 const App = () => {
 
-  const [bool, changeBool] = useState(false);
-  const [theCoolerBeerList, setBeer] = useState([]);
+  //base list
+  const [beerList, setBeerList] = useState([]);
+  //list which will filter base list
+  const [filteredList, setFilteredList] = useState("");
 
   const fetchBeers = () => {
     return fetch("https://api.punkapi.com/v2/beers").then( (beers) => 
       beers.json()
-    ).then( (json) => setBeer(json))
+    ).then( (json) => {
+      setBeerList(json);
+      setFilteredList(json);
+      console.log(beerList);
+    })
   }
-  useEffect( () => {fetchBeers()}, [bool]);
 
-  const [filteredBeerList, filterBeerList] = useState(theCoolerBeerList);
-  const [searchBeer, updateSearch] = useState('');
-
-  const updateFilter = (search) => {
-    if (search == ''){
-      filterBeerList(theCoolerBeerList);
+  const updateBeerSearch = (e) => {
+    if (e.target.value == ''){
+      setFilteredList(beerList);
     } else{
-      const newList = theCoolerBeerList.filter( (beer) => 
-        (beer.name.toLowerCase()).includes(search)
-       );
-      filterBeerList(newList);
+      setFilteredList(beerList.filter( (beer) => 
+        (beer.name.toLowerCase()).includes(e.target.value)
+      ));
     }
   } 
-    
-  const updateBeerSearch = (e) => {
-    const event = e.target.value;
-    updateSearch(event);
-    updateFilter(searchBeer);
-  }
+  
+
+  //one time beer fetch at the start
+  useEffect(() => {
+    fetchBeers();
+  }, [])
+  //constant filterlist updating (during initial retrieval AND subsequent searches/filters)
+  useEffect(() => {
+
+  }, [beerList])
+
 
 
   return <Router>
     <main>
-      <Navbar searchBeer={searchBeer} updateBeerSearch={updateBeerSearch}/>
-      <Main filteredList={filteredBeerList}/>
+      <Navbar updateBeerSearch={updateBeerSearch}/>
+      <Main filteredList={filteredList} />
     </main>
   </Router>
 }

@@ -7,7 +7,7 @@ const SearchBox = (props) => {
     return (
         <div className={styles.searchBox}>
             <p>Search by Name:</p>
-            <input type="text" value={props.searchBeer} onChange={props.updateBeerSearch}></input>
+            <input type="text" onChange={props.updateBeerSearch}></input>
         </div>
     )
 }

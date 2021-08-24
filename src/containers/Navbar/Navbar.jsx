@@ -6,7 +6,7 @@ const Navbar = (props) => {
 
     return (
         <div className={styles.navigation}>
-            <SearchBox searchBeer={props.searchBeer} updateBeerSearch={props.updateBeerSearch}/>
+            <SearchBox updateBeerSearch={props.updateBeerSearch}/>
         </div>
     )
 }
