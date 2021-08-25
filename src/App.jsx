@@ -31,13 +31,17 @@ const App = () => {
     })
   }
 
+  //state which stores search bar text (programmed to work with filter)
+  const [beerSearch, setBeerSearch] = useState('');
   //function for updating beer list based on search bar
   const updateBeerSearch = (e) => {
+    setBeerSearch(e.target.value);
     if (e.target.value == ''){
       setFilteredList(beerList);
     } else{
       setFilteredList(beerList.filter( (beer) => 
-        (beer.name.toLowerCase()).includes(e.target.value)
+        (beer.name.toLowerCase()).includes(e.target.value) ||
+        (beer.name).includes(e.target.value)
       ));
     }
   } 
@@ -47,19 +51,8 @@ const App = () => {
   const [ABVBool, setABVBool] = useState(false);
   const [classicBool, setClassicBool] = useState(false);
   const [acidityBool, setAcidityBool] = useState(false);
-  //ABV Filter
-  const ABVFilter = () => {
-    if (ABVBool == false){
-      setFilteredList(beerList.filter( (beer) => 
-        beer.abv > 6.0
-      ));
-      setABVBool(true);
-    } else{
-      setFilteredList(beerList);
-      setABVBool(false);
-    }
-  }
-  //Classic Filter
+
+  //function to help classic filter.
   const dateRearranger = (first_brewed) => {
     if (first_brewed.includes("/")){
       const split_brewed = first_brewed.split("/");
@@ -73,32 +66,63 @@ const App = () => {
       return 999999;
     }
   }
-  const classicFilter = () => {
-    if (classicBool == false){
-      setFilteredList(beerList.filter( (beer) => 
+
+  //Filter function that filters based on bools
+  const filterTime = (e) => {
+    let returnedFilterList = beerList;
+    //ABV
+    if (ABVBool){
+      returnedFilterList = (returnedFilterList.filter( (beer) => 
+        beer.abv > 6.0
+      ));
+    }
+    //Classic
+    if (classicBool){
+      returnedFilterList = (returnedFilterList.filter( (beer) => 
         dateRearranger(beer.first_brewed) < 201000
       ));
+    }
+    //pH
+    if (acidityBool){
+      returnedFilterList = (returnedFilterList.filter( (beer) => 
+        beer.ph < 4.0
+      ));
+    }
+    //search
+    if (beerSearch != ''){
+      returnedFilterList = (returnedFilterList.filter( (beer) => 
+        (beer.name.toLowerCase()).includes(beerSearch) ||
+        (beer.name).includes(beerSearch)
+      ));
+      console.log(beerSearch);
+    }
+    setFilteredList(returnedFilterList);
+  }
+  //Toggle bools
+  //Alcohol Filter
+  const ABVFilter = () => {
+    if (ABVBool == false){
+      setABVBool(true);
+    } else{
+      setABVBool(false);
+    }
+  }
+  //Classic Filter
+  const classicFilter = () => {
+    if (classicBool == false){
       setClassicBool(true);
     } else{
-      setFilteredList(beerList);
       setClassicBool(false);
     }
   }
   //Acidity Filter
   const acidityFilter = () => {
     if (acidityBool == false){
-      setFilteredList(beerList.filter( (beer) => 
-        beer.ph < 4.0
-      ));
       setAcidityBool(true);
     } else{
-      setFilteredList(beerList);
       setAcidityBool(false);
     }
   }
-  //all filters must A: consider other filters, and B: consider the search function
-  //-ABH  -Classic  -pH  -ABH/Classic  -Classic/pH  -ABH/pH  -ABH/Classic/pH, all 7 of these combinations + search divider
-
 
   //one time beer fetch at the start
   useEffect(() => {
@@ -106,8 +130,8 @@ const App = () => {
   }, [])
   //constant filterlist updating (during initial retrieval AND subsequent searches/filters)
   useEffect(() => {
-
-  }, [beerList])
+    filterTime();
+  }, [beerSearch, ABVBool, classicBool, acidityBool])
 
 
 
