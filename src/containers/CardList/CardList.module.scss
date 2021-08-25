@@ -9,8 +9,13 @@
     overflow-y: auto;
 }
 
-@media screen and (max-width: 415px){
+@media screen and (max-width: 1450px){
     .beerlist{
         grid-template-columns: 1fr;
+    }
+    @media screen and (max-width: 480px){
+        .beerlist{
+            height: 80%;
+        }
     }
 }

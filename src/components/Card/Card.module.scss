@@ -1,19 +1,22 @@
 @import '../../assets/variables.module.scss';
 
 .card{
-    height:430px;
-    width:80%;
-    display:flex;
-    background-color:$primaryfrontcolour;
-    border-radius:8px;
-    margin:10px;
+    height: 430px;
+    width: 80%;
+    display: flex;
+    background-color: $primaryfrontcolour;
+    border-radius: 8px;
+    margin: 10px;
 }
 
 .cardleft{
+    margin: 4px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: $secondarybgcolour;
+    border-radius: 8px;
     .cardleft__image{
         margin: 10px;
         max-height: 300px;
@@ -46,8 +49,26 @@
     }
 }
 
-@media screen and (max-width: 415px){
+@media screen and (max-width: 1450px){
     .card{
-        width: 90%;
+        height: 300px;
+        .cardleft__image{
+            max-height: 180px;
+            width: auto;
+        }
+    }
+    @media screen and (max-width: 1024px){
+        .card{
+            height: 95%;
+            width: 90%;
+        }
+        @media screen and (max-width: 480px){
+            .cardright{    
+                p{
+                    font-size: 12px;
+                }
+            }
+        }
     }
 }
+

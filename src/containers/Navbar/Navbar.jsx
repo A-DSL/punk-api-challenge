@@ -5,12 +5,15 @@ import FiltersList from '../../components/FiltersList/FiltersList';
 
 const Navbar = (props) => {
 
-    const {ABVFilter, classicFilter, acidityFilter} = props;
+    const {ABVFilter, classicFilter, acidityFilter, ABVBool, classicBool, acidityBool} = props;
 
     return (
         <div className={styles.navigation}>
-            <SearchBox updateBeerSearch={props.updateBeerSearch}/>
-            <FiltersList ABVFilter={ABVFilter} classicFilter={classicFilter} acidityFilter={acidityFilter}/>
+            <h1>PUNK API</h1>
+            <section className={styles.navigation__features}>
+              <SearchBox updateBeerSearch={props.updateBeerSearch}/>
+              <FiltersList ABVFilter={ABVFilter} classicFilter={classicFilter} acidityFilter={acidityFilter} ABVBool={ABVBool} classicBool={classicBool} acidityBool={acidityBool}/>
+            </section>
         </div>
     )
 }

@@ -22,7 +22,7 @@ const App = () => {
 
   //fetch
   const fetchBeers = () => {
-    return fetch("https://api.punkapi.com/v2/beers").then( (beers) => 
+    return fetch("https://api.punkapi.com/v2/beers?per_page=80").then( (beers) => 
       beers.json()
     ).then( (json) => {
       setBeerList(json);
@@ -137,7 +137,7 @@ const App = () => {
 
   return <Router>
     <main>
-      <Navbar updateBeerSearch={updateBeerSearch} ABVFilter={ABVFilter} classicFilter={classicFilter} acidityFilter={acidityFilter}/>
+      <Navbar updateBeerSearch={updateBeerSearch} ABVFilter={ABVFilter} classicFilter={classicFilter} acidityFilter={acidityFilter} ABVBool={ABVBool} classicBool={classicBool} acidityBool={acidityBool}/>
       <Main filteredList={filteredList} />
     </main>
   </Router>
