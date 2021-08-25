@@ -60,11 +60,27 @@ const App = () => {
     }
   }
   //Classic Filter
+  const dateRearranger = (first_brewed) => {
+    if (first_brewed.includes("/")){
+      const split_brewed = first_brewed.split("/");
+      let dateNumber = "";
+      for (let i = (split_brewed.length-1); i >= 0; i -= 1){
+        dateNumber = dateNumber + split_brewed[i];
+      }
+      return Number(dateNumber);
+    }
+    else{
+      return 999999;
+    }
+  }
   const classicFilter = () => {
     if (classicBool == false){
-      
+      setFilteredList(beerList.filter( (beer) => 
+        dateRearranger(beer.first_brewed) < 201000
+      ));
       setClassicBool(true);
     } else{
+      setFilteredList(beerList);
       setClassicBool(false);
     }
   }
@@ -80,7 +96,8 @@ const App = () => {
       setAcidityBool(false);
     }
   }
-
+  //all filters must A: consider other filters, and B: consider the search function
+  //-ABH  -Classic  -pH  -ABH/Classic  -Classic/pH  -ABH/pH  -ABH/Classic/pH, all 7 of these combinations + search divider
 
 
   //one time beer fetch at the start

@@ -10,20 +10,21 @@
 }
 
 .cardleft{
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     .cardleft__image{
-        margin:10px;
-        max-height:300px;
-        width:auto;
+        margin: 10px;
+        max-height: 300px;
+        width: auto;
     }
     .filterdetails{
-        margin:10px;
-        display:grid;
-        grid-template-columns:1fr 1fr 1fr;
-        grid-gap:8px;
+        margin: 10px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 8px;
+        font-size: $minifontsize;
     }
 }
 
@@ -31,10 +32,22 @@
 
 .cardright{
     margin:10px;
+    h4{
+        font-size: $titlefontsize;
+    }
+    p{
+        font-size: $minifontsize;
+    }
     > div{
-        margin:10px;
+        margin: 10px;
         > *{
-            margin-top:4px;
+            margin-top: 4px;
         }
+    }
+}
+
+@media screen and (max-width: 415px){
+    .card{
+        width: 90%;
     }
 }

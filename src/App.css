@@ -1,6 +1,12 @@
 main{
     height:100vh;
     width:100vw;
-    display:flex;
+    display: flex;
     background-color: rgb(150, 137, 150);
+}
+
+@media screen and (max-width: 415px){
+    main{
+        flex-direction: column;
+    }
 }

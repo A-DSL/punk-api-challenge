@@ -1,6 +1,12 @@
 @import '../../assets/variables.module.scss';
 
 .mainbody{
-    width:78%;    
-    background-color:$primarybgcolour;
+    width: 78%;    
+    background-color: $primarybgcolour;
+}
+
+@media screen and (max-width: 415px){
+    .mainbody{
+        width: 100%;
+    }
 }
